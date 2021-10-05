@@ -98,7 +98,6 @@ module.exports = class Machine {
         for (let ch of input) {
             ch = ch == ' ' ? '_' : ch;
             let index = this.ptrIndex(); // computes and resize the __tape array if necessary
-            console.log(index);
             this.__tape [index] = ch;
             this.__offset++;
         }

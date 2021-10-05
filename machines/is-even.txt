@@ -1,0 +1,15 @@
+name: Even numbers by afmika
+init: stillReading
+accept: acceptIt
+
+stillReading, 0
+stillReading, 0, >
+
+stillReading, 1
+stillReading, 1, >
+
+stillReading, _
+checkIt, _, <
+
+checkIt, 0
+acceptIt, 0,-

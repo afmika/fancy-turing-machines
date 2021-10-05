@@ -1,7 +1,9 @@
 const Parser = require("./classes/Parser");
 
 const parser = new Parser ();
-const machine = parser.parse ('./machines/infinite-hahaha.txt');
+// const machine = parser.parse ('./machines/infinite-hahaha.txt');
+// const machine = parser.parse ('./machines/hello-turing.txt');
+const machine = parser.parse ('./machines/hello-turing.txt');
 
 machine.compile ();
 machine.show ();
