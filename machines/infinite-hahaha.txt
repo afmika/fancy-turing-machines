@@ -1,5 +1,9 @@
-initial q0,
-accept q3,
+name: Test
+init: q0
+accept: any
 
-q0 _ q1 h r,
-q1 _ q0 a r
+q0, _
+q1, h, >
+
+q1, _
+q0, a, >

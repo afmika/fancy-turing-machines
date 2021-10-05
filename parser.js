@@ -1,8 +1,9 @@
 const Parser = require("./classes/Parser");
 
 const parser = new Parser ();
-const machine = parser.parse ('./machines/mika-machine.txt');
-console.log(machine.__states_map)
+const machine = parser.parse ('./machines/infinite-hahaha.txt');
+
+machine.compile ();
 machine.show ();
 
 let interval = setInterval (() => {

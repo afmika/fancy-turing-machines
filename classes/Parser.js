@@ -13,7 +13,7 @@ module.exports = class Parser {
         }
 
         let [name, init, accept] = res.slice(0, 3).map(it => {
-            return it.split(':').pop();
+            return it.split(/:[ ]*/).pop();
         });
 
         const machine = new Machine (name, init, accept);
@@ -22,7 +22,7 @@ module.exports = class Parser {
             let curr = left.shift();
             let next = left.shift();
             if (next == undefined) {
-                throw Error ('Error after ' + curr);
+                throw Error ('Error after, next state not defined for ' + curr);
             }
             let [c_state, reads] = curr.replace(/[ ]+/g, '').split(',');
             let [n_state, writes, go] = next.replace(/[ ]+/g, '').split(',');
@@ -39,7 +39,7 @@ module.exports = class Parser {
                 }
             });
         }
-        machine.compile ();
+
         return machine;
     }
 }
