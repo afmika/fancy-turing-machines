@@ -36,11 +36,26 @@ function generateMachineFrom(str) {
 	const machine = new Machine('Test');
 	machine.transitions = transitions;
 	machine.initialState = 'q0';
-	machine.acceptedState = 'q' + (L + 2);
+	machine.acceptedState = 'q1' + (L + 2);
 
 	return machine;
 }
 
 // plz use std-out
-const code = generateMachineFrom('Mika').asCode();
-console.log(code);
+const machine = generateMachineFrom ('Mika');
+// const code = machine.asCode();
+// console.log(code);
+
+machine.compile ();
+// machine.setInput ('RAZAFY BE');
+machine.show ();
+
+let interval = setInterval (() => {
+	machine.next ((verdict, tape_array, cursor_pos, error) => {
+		machine.show ();
+		if (verdict || error) {
+			clearInterval (interval);
+			console.log(verdict, 'curr_pos = ' + cursor_pos, error || 'No error');
+		}
+	});
+}, 500);
