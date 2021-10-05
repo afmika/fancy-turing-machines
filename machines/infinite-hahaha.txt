@@ -1,0 +1,5 @@
+initial q0,
+accept q3,
+
+q0 _ q1 h r,
+q1 _ q0 a r
