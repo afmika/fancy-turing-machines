@@ -2,14 +2,8 @@ const Constant = require('./Constant');
 const Machine = require('./Machine');
 
 module.exports = class MachineGenerator {
-    /**
-     * Creates a non-compiled working Turing Machine that displays a given string of any length
-     * @param {string} str 
-     * @returns 
-     */
-    static fromString (str) {
+    static getTransitions (str) {
         const transitions = [];
-    
         str = str.replace(' ', '_');
     
         for (let i = 0; i < str.length; i++) {
@@ -40,8 +34,19 @@ module.exports = class MachineGenerator {
             }
         });
 
+        return transitions;
+    }
+
+    /**
+     * Creates a non-compiled working Turing Machine that displays a given string of any length
+     * @param {string} str 
+     * @returns 
+     */
+    static fromString (str) {
+        const transitions = MachineGenerator.getTransitions (str);
         // console.log(transitions);
-    
+        let L = str.length - 1;
+
         const machine = new Machine('Test');
         machine.transitions = transitions;
         machine.initialState = 'q0';
