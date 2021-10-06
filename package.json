@@ -1,0 +1,23 @@
+{
+  "name": "fancy-turing-machines",
+  "version": "1.0.0",
+  "description": "Fancy Turing Machines",
+  "main": "afturing.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afmika/fancy-turing-machines.git"
+  },
+  "keywords": [
+    "Turing",
+    "Machine"
+  ],
+  "author": "afmika",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/afmika/fancy-turing-machines/issues"
+  },
+  "homepage": "https://github.com/afmika/fancy-turing-machines#readme"
+}

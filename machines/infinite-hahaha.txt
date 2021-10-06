@@ -1,4 +1,7 @@
-name: Test
+// Infinite hahaha... program
+// afmika
+
+name: Infinite haha
 init: q0
 accept: any
 

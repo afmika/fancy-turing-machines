@@ -1,3 +1,6 @@
+// Hello World
+// afmika
+
 name: Test
 init: q0
 accept: q12

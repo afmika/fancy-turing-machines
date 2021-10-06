@@ -24,6 +24,11 @@ module.exports = class Parser {
         let res = [], line = 1;
         for (let row of rows) {
             let trimed = row.trim ();
+            if (trimed.split('//').length >= 2) {
+                line++;
+                continue;
+            }
+
             if (trimed != '')
                 res.push ({str : trimed, line : line});
             line++;

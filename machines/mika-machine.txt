@@ -1,3 +1,6 @@
+// outputs 'Mika' and accepts it
+// afmika
+
 name: Test
 init: q0
 accept: q5
