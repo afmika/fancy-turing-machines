@@ -28,10 +28,14 @@ const invalid = x => x === null || x === '' || x === undefined;
     machine.compile ();
     // machine.setInput (1010101); // reject
     machine.setInput (input_value); // accept
+
     machine.show ();
+    console.log('[-] State '  + machine.state);
 
     let interval = setInterval (() => {
         machine.next ((verdict, tape_array, cursor_pos, error) => {
+            console.clear();
+            console.log('[-] State '  + machine.state);
             machine.show ();
             if (verdict || error) {
                 clearInterval (interval);
