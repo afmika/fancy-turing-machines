@@ -4,10 +4,20 @@ const Constant = require ('./Constant');
 
 
 module.exports = class Parser {
+    /**
+     * Remove spaces and trim
+     * @param {string} item 
+     * @returns 
+     */
     __clean (item) {
         return item.replace(/[ ]+/g, '');
     }
 
+    /**
+     * Parse a file describing a Turing Machine
+     * @param {string} file_path 
+     * @returns {Machine} non-compiled Turing Machine object
+     */
     parse (file_path) {
         const content = fs.readFileSync (file_path).toString();
         let rows = content.split(/[\n\r]+/);

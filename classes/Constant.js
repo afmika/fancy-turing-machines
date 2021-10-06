@@ -3,5 +3,5 @@ module.exports = {
     RIGHT : '>',
     LEFT : '<',
     HALT : '-',
-    TAPE_WINDOW : 10
+    TAPE_WINDOW : 20
 };

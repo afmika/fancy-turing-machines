@@ -1,6 +1,12 @@
 const Constant = require ('./Constant');
 
 module.exports = class Machine {
+    /**
+     * @constructor
+     * @param {string} name the machine's name
+     * @param {string} init initial state 
+     * @param {string} accept accepted state
+     */
     constructor(name, init, accept) {
         this.name = name;
         this.initialState = init;
@@ -8,6 +14,9 @@ module.exports = class Machine {
         this.transitions = [];
     }
 
+    /**
+     * Initializes the current Turing machine
+     */
     initMachinery () {
         this.__tape = new Array (Constant.TAPE_WINDOW).fill(Constant.BLANK); // tape
         this.__init_ptr = Math.floor (this.__tape.length / 2) - 1; // current pos
@@ -26,6 +35,10 @@ module.exports = class Machine {
         return a + ',' + b;
     }
 
+    /**
+     * Converts the machine into a parsable code
+     * @returns {string}
+     */
     asCode() {
         this.compile();
 
@@ -86,7 +99,7 @@ module.exports = class Machine {
     }
 
     /**
-     * Define an input, if none is defined, BLANK will be used
+     * Defines an input, if none is defined, BLANK will be used
      * @param {string} input 
      */
     setInput (input) {
@@ -100,6 +113,10 @@ module.exports = class Machine {
         this.__offset = 0; // rollback
     }
 
+    /**
+     * Computes the current index (0-indexed) and resizes the tape if necessary
+     * @returns {number}
+     */
     ptrIndex () {
         let pos = this.__init_ptr + this.__offset;
         if (pos < 0) {
@@ -115,6 +132,10 @@ module.exports = class Machine {
         return pos;
     }
 
+    /**
+     * Reads the current value
+     * @returns {string}
+     */
     read () {
         return this.__tape[this.ptrIndex()];
     }
@@ -124,6 +145,9 @@ module.exports = class Machine {
      * @returns 
      */
     next (fun) {
+        if (fun == undefined || fun == null)
+            throw Error ('Callback function not given');
+        
         let reads = this.read ();
         if (this.state == null || this.state == undefined)
             this.state = this.initialState;
@@ -132,7 +156,7 @@ module.exports = class Machine {
         let pair = this.__key (this.state, reads);
 
         if (this.__states_map[pair] == undefined) {
-            fun('rejected', this.__tape, pos, Error('Unable to find handler for ' + reads + ' in state ' + this.state));
+            fun('rejected', this.__tape, pos, Error('Unable to find handler for "' + reads + '" in state "' + this.state + "'"));
             return;
         }
 

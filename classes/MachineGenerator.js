@@ -40,12 +40,12 @@ module.exports = class MachineGenerator {
             }
         });
 
-        console.log(transitions)
+        // console.log(transitions);
     
         const machine = new Machine('Test');
         machine.transitions = transitions;
         machine.initialState = 'q0';
-        machine.acceptedState = 'q1' + (L + 2);
+        machine.acceptedState = 'q' + (L + 2);
     
         return machine;
     }
