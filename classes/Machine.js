@@ -1,10 +1,6 @@
-module.exports = class Machine {
-    static BLANK = '_';
-    static RIGHT = '>';
-    static LEFT = '<';
-    static HALT = '-';
-    static TAPE_WINDOW = 10;
+const Constant = require ('./Constant');
 
+module.exports = class Machine {
     constructor(name, init, accept) {
         this.name = name;
         this.initialState = init;
@@ -13,7 +9,7 @@ module.exports = class Machine {
     }
 
     initMachinery () {
-        this.__tape = new Array (Machine.TAPE_WINDOW).fill(Machine.BLANK); // tape
+        this.__tape = new Array (Constant.TAPE_WINDOW).fill(Constant.BLANK); // tape
         this.__init_ptr = Math.floor (this.__tape.length / 2) - 1; // current pos
         this.__offset = 0; // current offset
         this.__states_map = {}; // state table
@@ -146,14 +142,14 @@ module.exports = class Machine {
         this.__tape[pos] = writes;
 
         
-        if (go == Machine.HALT) {
+        if (go == Constant.HALT) {
             fun(this.state == this.acceptedState ? 'accepted' : 'rejected', this.__tape, pos);
             return;
         }
         fun(null, this.__tape, pos, null);
 
-        if (go == Machine.LEFT) this.__offset--;
-        if (go == Machine.RIGHT) this.__offset++;
+        if (go == Constant.LEFT) this.__offset--;
+        if (go == Constant.RIGHT) this.__offset++;
 
     }
 

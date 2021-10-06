@@ -1,7 +1,6 @@
 name: Test
 init: q0
 accept: q12
-
 q0, _
 q1, H, >
 

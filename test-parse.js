@@ -13,7 +13,9 @@ let interval = setInterval (() => {
 		machine.show ();
 		if (verdict || error) {
 			clearInterval (interval);
-			console.log(verdict, 'curr_pos = ' + cursor_pos, error || 'No error');
+			console.log(verdict, 'curr_pos = ' + cursor_pos);
+			if (error) 
+				console.error (error.message);
 		}
 	});
 }, 500);
