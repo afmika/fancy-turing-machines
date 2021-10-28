@@ -27,7 +27,7 @@ const invalid = x => x === null || x === '' || x === undefined;
     const machine = parser.parse (filename);
     machine.compile ();
     // machine.setInput (1010101); // reject
-    machine.setInput (input_value); // accept
+    machine.setInput (input_value);
 
     machine.show ();
     console.log('[-] State '  + machine.state);
